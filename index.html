@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Clone</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Phosphor Icons for a clean, modern look -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="ph-fill ph-spotify-logo"></i>
+                <span>Spotify</span>
+            </div>
+
+            <ul class="nav-links">
+                <li class="nav-item active" data-view="home">
+                    <i class="ph ph-house"></i>
+                    <span>Home</span>
+                </li>
+                <li class="nav-item" data-view="search">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <span>Search</span>
+                </li>
+            </ul>
+
+            <ul class="nav-links library-links">
+                <li class="nav-item" data-view="playlist">
+                    <i class="ph ph-books"></i>
+                    <span>Your Library</span>
+                </li>
+                <li class="nav-item" data-view="favourite">
+                    <i class="ph-fill ph-heart"></i>
+                    <span>Favourite Songs</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="topbar">
+                <div class="nav-arrows">
+                    <button class="arrow-btn"><i class="ph ph-caret-left"></i></button>
+                    <button class="arrow-btn"><i class="ph ph-caret-right"></i></button>
+                </div>
+                <div class="user-profile">
+                    <button class="upgrade-btn">Explore Premium</button>
+                    <div class="profile-icon"><i class="ph ph-user"></i></div>
+                </div>
+            </header>
+
+            <div class="content-scroll">
+                <!-- Home View -->
+                <div id="view-home" class="view-section active">
+                    <h2>Good evening</h2>
+                    <div class="grid-container top-mixes" id="top-mixes-container">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <h2>Made for you</h2>
+                    <div class="card-container" id="made-for-you-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Search View -->
+                <div id="view-search" class="view-section hidden">
+                    <div class="search-header">
+                        <h2>Browse all</h2>
+                        <p class="search-placeholder-text">Search feature is a placeholder. Here are all the available
+                            songs.</p>
+                    </div>
+                    <div class="card-container" id="search-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Playlist View -->
+                <div id="view-playlist" class="view-section hidden">
+                    <h2>Your Library</h2>
+                    <div class="list-container" id="playlist-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Favourite View -->
+                <div id="view-favourite" class="view-section hidden">
+                    <div class="favourite-header">
+                        <div class="favourite-icon">
+                            <i class="ph-fill ph-heart"></i>
+                        </div>
+                        <div class="favourite-info">
+                            <span>Playlist</span>
+                            <h1>Favourite Songs</h1>
+                            <span id="fav-count">0 songs</span>
+                        </div>
+                    </div>
+                    <div class="list-container" id="favourite-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bottom Player -->
+    <div class="player-bar">
+        <div class="now-playing">
+            <img src="assets/cover1.png" alt="Album Art" class="now-playing-img" id="player-img" style="display: none;">
+            <div class="now-playing-info">
+                <div class="title" id="player-title">--</div>
+                <div class="artist" id="player-artist">--</div>
+            </div>
+            <button class="heart-btn" id="player-fav-btn"><i class="ph ph-heart"></i></button>
+        </div>
+
+        <div class="player-controls">
+            <div class="control-buttons">
+                <button class="control-btn"><i class="ph ph-shuffle"></i></button>
+                <button class="control-btn" id="prev-btn"><i class="ph-fill ph-skip-back"></i></button>
+                <button class="control-btn play-btn" id="play-btn"><i class="ph-fill ph-play-circle"></i></button>
+                <button class="control-btn" id="next-btn"><i class="ph-fill ph-skip-forward"></i></button>
+                <button class="control-btn"><i class="ph ph-repeat"></i></button>
+            </div>
+            <div class="playback-bar">
+                <span class="time" id="current-time">0:00</span>
+                <div class="progress-container" id="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <span class="time" id="total-time">0:00</span>
+            </div>
+        </div>
+
+        <div class="volume-controls">
+            <button class="control-btn"><i class="ph ph-microphone-stage"></i></button>
+            <button class="control-btn"><i class="ph ph-queue"></i></button>
+            <button class="control-btn"><i class="ph ph-speaker-high"></i></button>
+            <div class="volume-bar-container" id="volume-container">
+                <div class="volume-bar" id="volume-bar" style="width: 100%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audio-element"></audio>
+    <script src="script.js"></script>
+</body>
+
+</html>
